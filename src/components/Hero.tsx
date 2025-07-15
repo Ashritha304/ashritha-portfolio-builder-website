@@ -60,7 +60,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-scale-in">
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-large bg-gradient-primary p-2">
-                <img src={portraitImage} alt="Ashritha Kodipunjula" className="w-full h-full object-cover rounded-full" />
+                
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-16 h-16 bg-teal rounded-full opacity-20 animate-pulse"></div>
