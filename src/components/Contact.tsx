@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,40 +13,38 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "ashritha150kb@gmail.com",
-      href: "mailto:ashritha150kb@gmail.com",
-      color: "text-primary bg-primary/10"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 7330988675",
-      href: "tel:+917330988675",
-      color: "text-teal bg-teal/10"
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "Connect with me",
-      href: "https://linkedin.com/in/ashritha-k-6282b8210",
-      color: "text-accent bg-accent/10"
-    }
-  ];
-
+  const {
+    toast
+  } = useToast();
+  const contactInfo = [{
+    icon: Mail,
+    label: "Email",
+    value: "ashritha150kb@gmail.com",
+    href: "mailto:ashritha150kb@gmail.com",
+    color: "text-primary bg-primary/10"
+  }, {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 7330988675",
+    href: "tel:+917330988675",
+    color: "text-teal bg-teal/10"
+  }, {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Connect with me",
+    href: "https://linkedin.com/in/ashritha-k-6282b8210",
+    color: "text-accent bg-accent/10"
+  }];
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -56,15 +53,17 @@ const Contact = () => {
     setTimeout(() => {
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon."
       });
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
       setIsSubmitting(false);
     }, 1000);
   };
-
-  return (
-    <section id="contact" className="py-20 bg-background">
+  return <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-charcoal mb-4">Let's Connect</h2>
@@ -88,14 +87,7 @@ const Contact = () => {
             </div>
 
             <div className="space-y-4">
-              {contactInfo.map((item, index) => (
-                <a
-                  key={index}
-                  href={item.href}
-                  target={item.href.startsWith('http') ? '_blank' : '_self'}
-                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                  className="flex items-center space-x-4 p-4 rounded-lg border border-border hover:shadow-medium hover:border-primary/30 transition-all duration-300 group"
-                >
+              {contactInfo.map((item, index) => <a key={index} href={item.href} target={item.href.startsWith('http') ? '_blank' : '_self'} rel={item.href.startsWith('http') ? 'noopener noreferrer' : ''} className="flex items-center space-x-4 p-4 rounded-lg border border-border hover:shadow-medium hover:border-primary/30 transition-all duration-300 group">
                   <div className={`p-3 rounded-lg ${item.color} group-hover:scale-110 transition-transform`}>
                     <item.icon className="w-6 h-6" />
                   </div>
@@ -105,8 +97,7 @@ const Contact = () => {
                       {item.value}
                     </p>
                   </div>
-                </a>
-              ))}
+                </a>)}
             </div>
 
             {/* Quick Stats */}
@@ -121,85 +112,10 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="animate-slide-up delay-200">
-            <Card className="border border-border shadow-medium">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-charcoal">Send a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-sm font-medium text-charcoal">
-                      Your Name *
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="border-border focus:border-primary focus:ring-primary"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium text-charcoal">
-                      Email Address *
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="border-border focus:border-primary focus:ring-primary"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-sm font-medium text-charcoal">
-                      Message *
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className="border-border focus:border-primary focus:ring-primary resize-none"
-                      placeholder="Tell me about your project, opportunity, or just say hello..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="mr-2" size={20} />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
