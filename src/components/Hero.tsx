@@ -1,17 +1,16 @@
 import { ArrowDown, Download, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import portraitImage from '@/assets/ashritha-portrait.jpg';
-
 const Hero = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
   };
-
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative bg-gradient-subtle">
+  return <section id="home" className="min-h-screen flex items-center justify-center relative bg-gradient-subtle">
       <div className="container mx-auto px-6 py-20 pt-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Column - Content */}
@@ -39,28 +38,18 @@ const Hero = () => {
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">
-                  Students Mentored
-                </div>
+                
+                
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg"
-                className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity"
-                onClick={() => scrollToSection('#contact')}
-              >
+              <Button size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity" onClick={() => scrollToSection('#contact')}>
                 <Mail className="mr-2" size={20} />
                 Contact Me
               </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-              >
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <Download className="mr-2" size={20} />
                 Download Resume
               </Button>
@@ -71,11 +60,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end animate-scale-in">
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-large bg-gradient-primary p-2">
-                <img
-                  src={portraitImage}
-                  alt="Ashritha Kodipunjula"
-                  className="w-full h-full object-cover rounded-full"
-                />
+                <img src={portraitImage} alt="Ashritha Kodipunjula" className="w-full h-full object-cover rounded-full" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-16 h-16 bg-teal rounded-full opacity-20 animate-pulse"></div>
@@ -87,16 +72,11 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <button
-          onClick={() => scrollToSection('#about')}
-          className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
-        >
+        <button onClick={() => scrollToSection('#about')} className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors">
           <span className="text-sm mb-2">Scroll down</span>
           <ArrowDown size={20} />
         </button>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
